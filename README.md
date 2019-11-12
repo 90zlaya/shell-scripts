@@ -9,12 +9,16 @@ Clone or download this repository and then update variables to your values befor
 # Clone repository
 git clone https://github.com/90zlaya/shell-scripts.git
 
-# Enter shell scripts directory
-cd shell-scripts
+# Enter shell scripts source directory
+cd shell-scripts/src/
 
 # Open script to have it updated
-gedit <script_name>.sh
+gedit <script-name>.sh
 
 # Run script
-bash <script_name>.sh
+bash <script-name>.sh
 ```
+
+For more information on how to use specific script check [scripts.md] file.
+
+[scripts.md]: src/SCRIPTS.md
