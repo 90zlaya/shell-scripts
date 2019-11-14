@@ -1,8 +1,7 @@
 # shell-scripts
-Custom Unix shell scripts for file manipulation, program execution, and printing text
+> Custom Unix shell scripts for file manipulation, program execution, and printing text.
 
 ## How to use
-
 Clone or download this repository and then update variables to your values before you run them. Here's example:
 
 ```bash
@@ -19,6 +18,6 @@ gedit <script-name>.sh
 bash <script-name>.sh
 ```
 
-For more information on how to use specific script check [scripts.md] file.
+For more information on how to use specific script check [list of available scripts].
 
-[scripts.md]: src/SCRIPTS.md
+[list of available scripts]: src/SCRIPTS.md#list-of-available-scripts
