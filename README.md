@@ -20,4 +20,4 @@ bash <script-name>.sh
 
 For more information on how to use specific script check [list of available scripts].
 
-[list of available scripts]: src/SCRIPTS.md#list-of-available-scripts
+[list of available scripts]: src/README.md#list-of-available-scripts
