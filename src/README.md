@@ -3,6 +3,7 @@
 1. [PHP Switch]
 2. [PHP Extensions]
 3. [SSH Connect]
+4. [cURL Query]
 
 ## PHP Switch
 
@@ -42,6 +43,19 @@ bash ssh-connect.sh
 
 You will be asked for password before server lets you to in.
 
+## cURL Query
+
+* File: curl-query.sh
+* Description: Query API endpoint via cURL
+
+If you want to query other API than the one listed as default in this shell script, change `BASE_URL` and update `CONTENT_TYPE` if necessary.
+
+```bash
+# Query quotes endpoint
+bash curl-query.sh quotes
+```
+
 [PHP Switch]: README.md#php-switch
 [PHP Extensions]: README.md#php-extensions
 [SSH Connect]: README.md#ssh-connect
+[cURL Query]: README.md#curl-query
