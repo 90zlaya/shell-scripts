@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Server user
-USER=test;
+USER="test";
 # Host name
-HOST=test.com;
+HOST="test.com";
 # Port number
 PORT=8080;
 
