@@ -3,6 +3,7 @@
 # List of apm extensions
 APM_EXTENSIONS=(
   "atom-clock"
+  "atom-vue"
   "busy-signal"
   "csstree-validator"
   "emmet"
