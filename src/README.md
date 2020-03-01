@@ -1,9 +1,10 @@
 # List of available scripts
 
 1. [PHP Switch]
-2. [PHP Extensions]
-3. [SSH Connect]
-4. [cURL Query]
+1. [PHP Extensions]
+1. [SSH Connect]
+1. [cURL Query]
+1. [apm Extensions]
 
 ## PHP Switch
 
@@ -17,6 +18,8 @@ You would have to update this script and list versions of PHP installed on your 
 bash php-switch.sh 7.3
 ```
 
+[⬆ back to top](#list-of-available-scripts)
+
 ## PHP Extensions
 
 * File: php-extensions.sh
@@ -28,6 +31,8 @@ This script contains some of the necessary PHP extensions which have to be insta
 # How to install extensions for PHP 7.3
 bash php-extensions.sh 7.3
 ```
+
+[⬆ back to top](#list-of-available-scripts)
 
 ## SSH Connect
 
@@ -43,6 +48,8 @@ bash ssh-connect.sh
 
 You will be asked for password before server lets you to in.
 
+[⬆ back to top](#list-of-available-scripts)
+
 ## cURL Query
 
 * File: curl-query.sh
@@ -55,7 +62,24 @@ If you want to query other API than the one listed as default in this shell scri
 bash curl-query.sh quotes
 ```
 
+[⬆ back to top](#list-of-available-scripts)
+
+## apm Extensions
+
+* File: apm-extensions.sh
+* Description: Install extensions to the Atom editor
+
+Add or remove extension by updating `APM_EXTENSIONS` variable.
+
+```bash
+# Install apm extensions
+bash apm-extensions.sh
+```
+
+[⬆ back to top](#list-of-available-scripts)
+
 [PHP Switch]: README.md#php-switch
 [PHP Extensions]: README.md#php-extensions
 [SSH Connect]: README.md#ssh-connect
 [cURL Query]: README.md#curl-query
+[apm Extensions]: README.md#apm-extensions
