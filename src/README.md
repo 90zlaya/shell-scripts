@@ -5,6 +5,7 @@
 1. [SSH Connect]
 1. [cURL Query]
 1. [apm Extensions]
+1. [rtl8821ce install]
 
 ## PHP Switch
 
@@ -78,8 +79,23 @@ bash apm-extensions.sh
 
 [⬆ back to top](#list-of-available-scripts)
 
+## rtl8821ce install
+
+* File: rtl8821ce-install.sh
+* Description: Install RTL8821ce (wireless) driver
+
+You need git installed on your system before running this script.
+
+```bash
+# Install apm extensions
+bash apm-extensions.sh
+```
+
+[⬆ back to top](#list-of-available-scripts)
+
 [PHP Switch]: README.md#php-switch
 [PHP Extensions]: README.md#php-extensions
 [SSH Connect]: README.md#ssh-connect
 [cURL Query]: README.md#curl-query
 [apm Extensions]: README.md#apm-extensions
+[rtl8821ce install]: README.md#rtl8821ce-install
