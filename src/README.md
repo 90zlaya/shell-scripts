@@ -88,7 +88,7 @@ You need git installed on your system before running this script.
 
 ```bash
 # Install apm extensions
-bash apm-extensions.sh
+bash rtl8821ce-install.sh
 ```
 
 [⬆ back to top](#list-of-available-scripts)

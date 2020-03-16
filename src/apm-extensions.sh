@@ -12,7 +12,6 @@ APM_EXTENSIONS=(
   "linter-jsonlint"
   "linter-php"
   "linter-ui-default"
-  "markdown-preview-plus"
   "platformio-ide-terminal"
   "remote-ftp"
 );
