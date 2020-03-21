@@ -1,11 +1,11 @@
 # List of available scripts
 
-1. [PHP Switch]
-1. [PHP Extensions]
-1. [SSH Connect]
-1. [cURL Query]
-1. [apm Extensions]
-1. [rtl8821ce install]
+1. [PHP Switch](#php-switch)
+1. [PHP Extensions](#php-extensions)
+1. [SSH Connect](#ssh-connect)
+1. [cURL Query](#curl-query)
+1. [apm Extensions](#apm-extensions)
+1. [rtl8821ce install](#rtl8821ce-install)
 
 ## PHP Switch
 
@@ -92,10 +92,3 @@ bash rtl8821ce-install.sh
 ```
 
 [⬆ back to top](#list-of-available-scripts)
-
-[PHP Switch]: README.md#php-switch
-[PHP Extensions]: README.md#php-extensions
-[SSH Connect]: README.md#ssh-connect
-[cURL Query]: README.md#curl-query
-[apm Extensions]: README.md#apm-extensions
-[rtl8821ce install]: README.md#rtl8821ce-install
