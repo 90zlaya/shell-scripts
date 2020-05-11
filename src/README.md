@@ -7,7 +7,7 @@
 1. [apm Extensions](#apm-extensions)
 1. [rtl8821ce install](#rtl8821ce-install)
 
-## 1.  PHP Switch
+## PHP Switch
 
 * File: php-switch.sh
 * Description: Switch main version of PHP on OS
@@ -21,7 +21,7 @@ bash php-switch.sh 7.3
 
 [⬆ back to top](#list-of-available-scripts)
 
-## 2. PHP Extensions
+## PHP Extensions
 
 * File: php-extensions.sh
 * Description: Install PHP extensions
@@ -35,7 +35,7 @@ bash php-extensions.sh 7.3
 
 [⬆ back to top](#list-of-available-scripts)
 
-## 3. SSH Connect
+## SSH Connect
 
 * File: ssh-connect.sh
 * Description: Connect to the server via SSH connection
@@ -51,7 +51,7 @@ You will be asked for password before server lets you to in.
 
 [⬆ back to top](#list-of-available-scripts)
 
-## 4. cURL Query
+## cURL Query
 
 * File: curl-query.sh
 * Description: Query API endpoint via cURL
@@ -65,7 +65,7 @@ bash curl-query.sh quotes
 
 [⬆ back to top](#list-of-available-scripts)
 
-## 5. apm Extensions
+## apm Extensions
 
 * File: apm-extensions.sh
 * Description: Install extensions to the Atom editor
@@ -79,7 +79,7 @@ bash apm-extensions.sh
 
 [⬆ back to top](#list-of-available-scripts)
 
-## 6. rtl8821ce install
+## rtl8821ce install
 
 * File: rtl8821ce-install.sh
 * Description: Install RTL8821ce (wireless) driver
