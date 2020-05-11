@@ -7,6 +7,7 @@ APM_EXTENSIONS=(
   "busy-signal"
   "csstree-validator"
   "emmet"
+  "file-icons"
   "intentions"
   "linter"
   "linter-jsonlint"

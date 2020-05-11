@@ -1,5 +1,5 @@
 # shell-scripts
-> Custom Unix shell scripts for file manipulation, program execution, and printing text.
+> Custom Unix shell scripts for file manipulation, program execution and printing text.
 
 ## How to use
 Clone or download this repository and then update variables to your values before you run them. Here's example:
