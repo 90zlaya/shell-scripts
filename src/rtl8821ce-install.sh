@@ -1,5 +1,14 @@
 #!/bin/bash
 
+################################################################################
+# Script name : rtl8821ce-install.sh
+# Description : Install RTL8821ce (wireless) driver
+# Arguments   : /
+# Author      : 90zlaya
+# Email       : contact@zlatanstajic.com
+# Licence     : MIT
+################################################################################
+
 # Navigate to the Downloads
 cd ~/Downloads/
 
