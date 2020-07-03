@@ -20,6 +20,7 @@ PHP_EXTENSIONS=(
   "curl"
   "pdo"
   "mysql"
+  "sqlite3"
   "gd"
 );
 
