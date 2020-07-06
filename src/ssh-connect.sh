@@ -10,10 +10,10 @@
 ################################################################################
 
 # Server user
-USER="test";
+USER="test"
 # Host name
-HOST="test.com";
+HOST="test.com"
 # Port number
-PORT=8080;
+PORT=8080
 
-ssh ${USER}@${HOST} -oPort=${PORT};
+ssh ${USER}@${HOST} -oPort=${PORT}

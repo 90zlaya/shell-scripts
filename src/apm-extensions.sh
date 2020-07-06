@@ -29,9 +29,9 @@ APM_EXTENSIONS=(
   "platformio-ide-terminal"
   "remote-ftp"
   "todo-show"
-);
+)
 
 for extension in ${APM_EXTENSIONS[*]}
 do
-  sudo apm install ${extension};
+  sudo apm install ${extension}
 done

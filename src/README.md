@@ -10,6 +10,7 @@
 ## PHP Switch
 
 * File: php-switch.sh
+* Arguments: Required
 * Description: Switch main version of PHP on OS
 
 You would have to update this script and list versions of PHP installed on your operating system inside `PHP_VERSIONS_INSTALLED` array in order to properly run it.
@@ -24,6 +25,7 @@ bash php-switch.sh 7.3
 ## PHP Extensions
 
 * File: php-extensions.sh
+* Arguments: Required
 * Description: Install PHP extensions
 
 This script contains some of the necessary PHP extensions which have to be installed separately. This script is pretty much straight forward, but you may update `PHP_EXTENSIONS` by adding or deleting items.
@@ -38,6 +40,7 @@ bash php-extensions.sh 7.3
 ## SSH Connect
 
 * File: ssh-connect.sh
+* Arguments: None
 * Description: Connect to the server via SSH connection
 
 You would have to update this script and set `USER`, `HOST` and `PORT` before running it.
@@ -54,6 +57,7 @@ You will be asked for password before server lets you to in.
 ## cURL Query
 
 * File: curl-query.sh
+* Arguments: Required
 * Description: Query API endpoint via cURL
 
 If you want to query other API than the one listed as default in this shell script, change `BASE_URL` and update `CONTENT_TYPE` if necessary.
@@ -68,6 +72,7 @@ bash curl-query.sh quotes
 ## apm Extensions
 
 * File: apm-extensions.sh
+* Arguments: None
 * Description: Install extensions to the Atom editor
 
 Add or remove extension by updating `APM_EXTENSIONS` variable.
@@ -82,6 +87,7 @@ bash apm-extensions.sh
 ## rtl8821ce install
 
 * File: rtl8821ce-install.sh
+* Arguments: None
 * Description: Install RTL8821ce (wireless) driver
 
 You need git installed on your system before running this script.

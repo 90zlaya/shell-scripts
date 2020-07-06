@@ -10,7 +10,7 @@
 ################################################################################
 
 # Parameter #1 represents endpoint & filename
-ENDPOINT=$1;
+ENDPOINT=$1
 
 # Base URL
 BASE_URL="https://breaking-bad-quotes.herokuapp.com/v1/"
