@@ -44,7 +44,7 @@ ls -al *.sh
 gedit <script-name>.sh
 ```
 
-When you're done editing script, save it an you are able to run it. 
+When you're done editing script, save it and you are able to run it. 
 
 ```bash
 # Run script
