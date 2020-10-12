@@ -2,7 +2,8 @@
 
 1. [PHP Switch](#php-switch)
 1. [SSH Connect](#ssh-connect)
-1. [apm Extensions](#apm-extensions)
+
+[↩ back to README.md](./../README.md#shell-scripts)
 
 ## PHP Switch
 
@@ -33,20 +34,5 @@ bash ssh-connect.sh
 ```
 
 You will be asked for password before server lets you to in.
-
-[⬆ back to top](#list-of-available-scripts)
-
-## apm Extensions
-
-* File: apm-extensions.sh
-* Arguments: None
-* Description: Install extensions to the Atom editor
-
-Add or remove extension by updating `APM_EXTENSIONS` variable.
-
-```bash
-# Install apm extensions
-bash apm-extensions.sh
-```
 
 [⬆ back to top](#list-of-available-scripts)
