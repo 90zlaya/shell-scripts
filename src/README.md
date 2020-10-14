@@ -1,13 +1,13 @@
-# List of available scripts
+## List of available scripts
 
 1. [PHP Switch](#php-switch)
 1. [SSH Connect](#ssh-connect)
 
 [↩ back to README.md](./../README.md#shell-scripts)
 
-## PHP Switch
+1. ### PHP Switch
 
-* File: php-switch.sh
+* File: [php-switch.sh](./php-switch.sh)
 * Arguments: Required
 * Description: Switch main version of PHP on OS
 
@@ -20,9 +20,9 @@ bash php-switch.sh 7.3
 
 [⬆ back to top](#list-of-available-scripts)
 
-## SSH Connect
+2. ### SSH Connect
 
-* File: ssh-connect.sh
+* File: [ssh-connect.sh](./ssh-connect.sh)
 * Arguments: None
 * Description: Connect to the server via SSH connection
 
