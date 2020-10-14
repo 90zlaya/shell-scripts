@@ -77,4 +77,4 @@ Make sure to check if there's new version of this repository. Occasionally run `
 
 [⬆ back to top](#table-of-contents)
 
-[list of available scripts]: ./src/README.md#table-of-contents. 
+[list of available scripts]: ./src/README.md#table-of-contents
