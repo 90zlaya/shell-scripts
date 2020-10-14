@@ -1,19 +1,15 @@
 # Shell Scripts
-> Custom Unix shell scripts for file manipulation, program execution and printing text.
+> Custom Unix shell scripts for file manipulation, program execution and printing text
 
 ## Table of Contents
 
 1. [How to Use](#how-to-use)
 1. [Recommendations](#recommendations)
-1. [After installation](#after-installation)
+1. [After Installation](#after-installation)
 
 You can jump to [list of available scripts] if you don't need introduction. 
 
 1. ### How to Use
-
-Setup shell scripts in a few simple steps: 
-
-**1st Step**
 
 Clone this repository to have it on your machine (in locale). 
 
@@ -21,8 +17,6 @@ Clone this repository to have it on your machine (in locale).
 # Clone repository
 git clone https://github.com/90zlaya/shell-scripts.git
 ```
-
-**2nd Step**
 
 Enter into cloned directory and mirror source folder. 
 
@@ -36,8 +30,6 @@ cp -R src/ deploy/
 
 It's recommended to keep name `deploy` for this copy as it was ignored by [.gitignore](./.gitignore). \
 This will allow you to `git pull` newest version of this repository without overwriting your updates to scripts. 
-
-**3rd Step**
 
 Navigate to the mirrored folder and edit script to meet your requirements. 
 
@@ -79,10 +71,10 @@ Replace `<alias-name>` with your alias and `<command>` with full path to your sc
 
 [⬆ back to top](#table-of-contents)
 
-3. ### After installation
+3. ### After Installation
 
 Make sure to check if there's new version of this repository. Occasionally run `git pull` in terminal. It's being updated and maintained on a regular basis. Any help will be warmly welcomed. 
 
 [⬆ back to top](#table-of-contents)
 
-[list of available scripts]: ./src/README.md#list-of-available-scripts. 
+[list of available scripts]: ./src/README.md#table-of-contents. 

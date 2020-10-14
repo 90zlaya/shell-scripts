@@ -1,4 +1,7 @@
-## List of available scripts
+# List of Available Scripts
+> This is list of available scripts you may use on any Unix-like system
+
+## Table of Contents
 
 1. [PHP Switch](#php-switch)
 1. [SSH Connect](#ssh-connect)
@@ -18,7 +21,7 @@ You would have to update this script and list versions of PHP installed on your 
 bash php-switch.sh 7.3
 ```
 
-[⬆ back to top](#list-of-available-scripts)
+[⬆ back to top](#table-of-contents)
 
 2. ### SSH Connect
 
@@ -35,4 +38,4 @@ bash ssh-connect.sh
 
 You will be asked for password before server lets you to in.
 
-[⬆ back to top](#list-of-available-scripts)
+[⬆ back to top](#table-of-contents)
