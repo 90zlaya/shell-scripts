@@ -6,6 +6,7 @@
 1. [PHP Switch](#php-switch)
 1. [SSH Connect](#ssh-connect)
 1. [Sync Forked](#sync-forked)
+1. [Git Pull](#git-pull)
 
 [↩ back to README.md](./../README.md#shell-scripts)
 
@@ -44,15 +45,28 @@ You will be asked for password before server lets you to in.
 3. ### Sync Forked
 
 * File: [sync-forked.sh](./sync-forked.sh)
-* Arguments: 1st is required, 2nd is optional
+* Arguments: 1st is optional, 2nd is optional
 * Description: Synchronize forked repository
 
 ```bash
 # Sync with remote repo (doing this only once per forked repo)
 bash sync-forked.sh /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>
 
-# Sync with remote repo (when remote upstream has been added)
-bash sync-forked.sh /var/www/html/<forked-repo-folder-name>
+# Sync with remote repo (when remote upstream has been added and current directory chosen)
+bash <path-to-the-shell-script>sync-forked.sh
+```
+
+[⬆ back to top](#table-of-contents)
+
+4. ### Git Pull
+
+* File: [git-pull.sh](./git-pull.sh)
+* Arguments: None
+* Description: Run git pull on all repos from directory
+
+```bash
+# When navigated to the root folder where all repos are located
+bash <path-to-the-shell-script>git-pull.sh
 ```
 
 [⬆ back to top](#table-of-contents)
