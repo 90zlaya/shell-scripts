@@ -7,6 +7,7 @@
 1. [SSH Connect](#ssh-connect)
 1. [Sync Forked](#sync-forked)
 1. [Git Pull](#git-pull)
+1. [SVN Update](#svn-update)
 
 [↩ back to README.md](./../README.md#shell-scripts)
 
@@ -67,6 +68,19 @@ bash <path-to-the-shell-script>sync-forked.sh
 ```bash
 # When navigated to the root folder where all repos are located
 bash <path-to-the-shell-script>git-pull.sh
+```
+
+[⬆ back to top](#table-of-contents)
+
+5. ### SVN Update
+
+* File: [svn-update.sh](./svn-update.sh)
+* Arguments: None
+* Description: Run svn update on all repos from directory
+
+```bash
+# When navigated to the root folder where all repos are located
+bash <path-to-the-shell-script>svn-update.sh
 ```
 
 [⬆ back to top](#table-of-contents)
