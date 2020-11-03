@@ -9,6 +9,23 @@
 # Licence     : MIT
 ################################################################################
 
+# Print message in certain manner
+#
+# @param MESSAGE_CONTENT
+#
+function print_message() {
+  # Define color
+  GREEN="\033[0;32m"
+  # Define no-color
+  NC="\033[0m"
+  # Parameter #1 represents message sting to be printed
+  MESSAGE_CONTENT=$1
+
+  echo -e "${GREEN}${MESSAGE_CONTENT}${NC}"
+}
+
+################################################################################
+
 # List all repos to variable
 REPOS=$(ls)
 
@@ -17,7 +34,7 @@ REPOS=$(ls)
 # Loop trough all repos
 for repo in ${REPOS[*]}
 do
-  echo "=================================================="
+  print_message "=============================================================>"
   echo "Entering directory"
   cd ${repo}
   pwd
@@ -27,7 +44,7 @@ do
   git log -n 1
   cd ../
   echo "Leaving directory"
-  echo "=================================================="
+  print_message "<============================================================="
 done
 
 ################################################################################
