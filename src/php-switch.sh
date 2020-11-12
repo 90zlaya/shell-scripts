@@ -9,10 +9,13 @@
 # Licence     : MIT
 ################################################################################
 
+################################################################################
+# Globals
+################################################################################
+
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
-
-################################################################################
+PHP_VERSION=$1
 
 # PHP versions installed on your OS (remove # do declare as installed)
 PHP_VERSIONS_INSTALLED=(
@@ -23,9 +26,6 @@ PHP_VERSIONS_INSTALLED=(
   #"7.3"
   #"7.4"
 )
-
-# Parameter #1 represents PHP version to be set
-PHP_VERSION=$1
 
 ################################################################################
 # Show help
@@ -99,20 +99,6 @@ End()
 }
 
 ################################################################################
-# Testing unique run
-################################################################################
-
-EndIfRunning()
-{
-  STARTED=`ps -f -u$USER | grep "$SCRIPT_NAME" | grep -v $$ | grep -v vi | grep -v log | grep -v grep | grep -v gedit`
-  
-  if [[ "x$STARTED" != "x" ]]
-  then
-    End 1 "$SCRIPT_NAME already running."
-  fi
-}
-
-################################################################################
 # Executing all
 ################################################################################
 
@@ -120,7 +106,6 @@ echo ""
 echo "Script $SCRIPT_NAME starting..."
 
 GetParameters $@
-EndIfRunning
 
 for version in ${PHP_VERSIONS_INSTALLED[*]}
 do

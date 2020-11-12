@@ -39,7 +39,7 @@ bash php-switch.sh 7.3
 bash sync-forked.sh /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>
 
 # Sync with remote repo (when remote upstream has been added and current directory chosen)
-bash <path-to-the-shell-script>sync-forked.sh
+bash <path-to-the-shell-script>/sync-forked.sh
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -51,8 +51,11 @@ bash <path-to-the-shell-script>sync-forked.sh
 * Description: Run git pull on all repos from directory
 
 ```bash
+# Show Help
+bash <path-to-the-shell-script>/git-pull.sh -h
+
 # When navigated to the root folder where all repos are located
-bash <path-to-the-shell-script>git-pull.sh
+bash <path-to-the-shell-script>/git-pull.sh
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -64,8 +67,11 @@ bash <path-to-the-shell-script>git-pull.sh
 * Description: Run svn update on all repos from directory
 
 ```bash
+# Show Help
+bash <path-to-the-shell-script>/svn-update.sh -h
+
 # When navigated to the root folder where all repos are located
-bash <path-to-the-shell-script>svn-update.sh
+bash <path-to-the-shell-script>/svn-update.sh
 ```
 
 [⬆ back to top](#table-of-contents)
