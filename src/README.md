@@ -31,14 +31,17 @@ bash php-switch.sh 7.3
 2. ### Sync Forked
 
 * File: [sync-forked.sh](./sync-forked.sh)
-* Arguments: 1st is optional, 2nd is optional
+* Arguments: main-branch, folder-location, remote-upstream
 * Description: Synchronize forked repository
 
 ```bash
-# Sync with remote repo (doing this only once per forked repo)
-bash sync-forked.sh /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>
+# Show Help
+bash sync-forked.sh -h
 
-# Sync with remote repo (when remote upstream has been added and current directory chosen)
+# Sync with remote repo (doing this only once per forked repo)
+bash sync-forked.sh <branch-name> /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>
+
+# Sync with remote repo (when branch is master, remote upstream has been added and current directory chosen)
 bash <path-to-the-shell-script>/sync-forked.sh
 ```
 
