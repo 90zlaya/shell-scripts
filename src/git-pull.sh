@@ -81,6 +81,35 @@ PrintMessage() {
 }
 
 ################################################################################
+# Git pull
+################################################################################
+
+GitPull() {
+  # Parameter #1 represents repo name
+  REPO_NAME=$1
+
+  if [ -d ${REPO_NAME} ]
+  then
+    PrintMessage "=============================================================>"
+    echo "Entering directory"
+    cd ${repo}
+    pwd
+    if [ -d .git ]
+    then 
+      echo "Pulling..."
+      git pull
+      git status
+      git log -n 1
+    else
+      echo 'Not git repo'
+    fi
+    cd ../
+    echo "Leaving directory"
+    PrintMessage "<============================================================="
+  fi
+}
+
+################################################################################
 # Executing all
 ################################################################################
 
@@ -95,17 +124,7 @@ REPOS=$(ls)
 # Loop trough all repos
 for repo in ${REPOS[*]}
 do
-  PrintMessage "=============================================================>"
-  echo "Entering directory"
-  cd ${repo}
-  pwd
-  echo "Pulling..."
-  git pull
-  git status
-  git log -n 1
-  cd ../
-  echo "Leaving directory"
-  PrintMessage "<============================================================="
+  GitPull ${repo}
 done
 
 End 0

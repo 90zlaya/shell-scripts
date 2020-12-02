@@ -81,6 +81,35 @@ PrintMessage() {
 }
 
 ################################################################################
+# SVN update
+################################################################################
+
+SubversionUpdate() {
+  # Parameter #1 represents repo name
+  REPO_NAME=$1
+
+  if [ -d ${REPO_NAME} ]
+  then
+    PrintMessage "=============================================================>"
+    echo "Entering directory"
+    cd ${repo}
+    pwd
+    if [ -d .svn ]
+    then 
+      echo "Updating..."
+      svn update
+      svn st
+      svn log -l 1
+    else
+      echo 'Not SVN repo'
+    fi
+    cd ../
+    echo "Leaving directory"
+    PrintMessage "<============================================================="
+  fi
+}
+
+################################################################################
 # Executing all
 ################################################################################
 
@@ -95,17 +124,7 @@ REPOS=$(ls)
 # Loop trough all repos
 for repo in ${REPOS[*]}
 do
-  PrintMessage "=============================================================>"
-  echo "Entering directory"
-  cd ${repo}
-  pwd
-  echo "Updating..."
-  svn update
-  svn st
-  svn log -l 1
-  cd ../
-  echo "Leaving directory"
-  PrintMessage "<============================================================="
+  SubversionUpdate ${repo}
 done
 
 End 0
