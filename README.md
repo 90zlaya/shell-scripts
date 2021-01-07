@@ -1,15 +1,15 @@
 # Shell Scripts
-> Custom Unix shell scripts for file manipulation, program execution and printing text
+> Custom Unix shell scripts for file manipulation, program execution and printing text.
 
 ## Table of Contents
 
-1. [How to Use](#how-to-use)
-1. [Recommendations](#recommendations)
-1. [After Installation](#after-installation)
+* [How to Use](#how-to-use)
+* [Recommendations](#recommendations)
+* [After Installation](#after-installation)
 
 You can jump to [list of available scripts] if you don't need introduction. 
 
-1. ### How to Use
+## How to Use
 
 Clone this repository to have it on your machine (in locale). 
 
@@ -28,7 +28,7 @@ cd shell-scripts/
 cp -R src/ deploy/
 ```
 
-It's recommended to keep name `deploy` for this copy as it was ignored by [.gitignore](./.gitignore). \
+It's recommended to keep name `deploy` for this copy as it was ignored by [.gitignore](.gitignore). \
 This will allow you to `git pull` newest version of this repository without overwriting your updates to scripts. 
 
 Navigate to the mirrored folder and edit script to meet your requirements. 
@@ -55,7 +55,7 @@ For more information on how to use specific script check [list of available scri
 
 [⬆ back to top](#table-of-contents)
 
-2. ### Recommendations
+## Recommendations
 
 You can create alias for certain script: 
 
@@ -71,7 +71,7 @@ Replace `<alias-name>` with your alias and `<command>` with full path to your sc
 
 [⬆ back to top](#table-of-contents)
 
-3. ### After Installation
+## After Installation
 
 Make sure to check if there's new version of this repository. Occasionally run `git pull` in terminal. It's being updated and maintained on a regular basis. Any help will be warmly welcomed. 
 

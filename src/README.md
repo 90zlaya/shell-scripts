@@ -3,16 +3,16 @@
 
 ## Table of Contents
 
-1. [PHP Switch](#php-switch)
-1. [Sync Forked](#sync-forked)
-1. [Git Pull](#git-pull)
-1. [SVN Update](#svn-update)
+* [PHP Switch](#php-switch)
+* [Sync Forked](#sync-forked)
+* [Git Pull](#git-pull)
+* [SVN Update](#svn-update)
 
-[↩ back to README.md](./../README.md#shell-scripts)
+[↩ back to README.md](../README.md#shell-scripts)
 
-1. ### PHP Switch
+## PHP Switch
 
-* File: [php-switch.sh](./php-switch.sh)
+* File: [php-switch.sh](php-switch.sh)
 * Arguments: php-version
 * Description: Switch main version of PHP on OS
 
@@ -28,9 +28,9 @@ bash php-switch.sh 7.3
 
 [⬆ back to top](#table-of-contents)
 
-2. ### Sync Forked
+## Sync Forked
 
-* File: [sync-forked.sh](./sync-forked.sh)
+* File: [sync-forked.sh](sync-forked.sh)
 * Arguments: main-branch, folder-location, remote-upstream
 * Description: Synchronize forked repository
 
@@ -47,9 +47,9 @@ bash <path-to-the-shell-script>/sync-forked.sh
 
 [⬆ back to top](#table-of-contents)
 
-3. ### Git Pull
+## Git Pull
 
-* File: [git-pull.sh](./git-pull.sh)
+* File: [git-pull.sh](git-pull.sh)
 * Arguments: None
 * Description: Run git pull on all repos from directory
 
@@ -63,9 +63,9 @@ bash <path-to-the-shell-script>/git-pull.sh
 
 [⬆ back to top](#table-of-contents)
 
-4. ### SVN Update
+## SVN Update
 
-* File: [svn-update.sh](./svn-update.sh)
+* File: [svn-update.sh](svn-update.sh)
 * Arguments: None
 * Description: Run svn update on all repos from directory
 
