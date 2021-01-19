@@ -41,14 +41,14 @@ cd deploy/
 ls -al *.sh
 
 # Open script to have it updated
-gedit <script-name>.sh
+gedit [script-name].sh
 ```
 
 When you're done editing script, save it and you are able to run it. 
 
 ```bash
 # Run script
-bash <script-name>.sh
+bash [script-name].sh
 ```
 
 For more information on how to use specific script check [list of available scripts]. 
@@ -61,13 +61,13 @@ You can create alias for certain script:
 
 ```bash
 # Create alias
-alias <alias-name>="<command>"
+alias [alias-name]="[command]"
 
 # Force list of aliases to reload in current session
 source ~/.bashrc
 ```
 
-Replace `<alias-name>` with your alias and `<command>` with full path to your script (presumably `<base-url>/shell-scripts/deploy/<script-name>.sh`). Force list of aliases to reload in current session or restart terminal. 
+Replace `[alias-name]` with your alias and `[command]` with full path to your script (presumably `[base-url]/shell-scripts/deploy/[script-name].sh`). Force list of aliases to reload in current session or restart terminal. 
 
 [⬆ back to top](#table-of-contents)
 

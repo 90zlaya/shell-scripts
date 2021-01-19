@@ -39,10 +39,10 @@ bash php-switch.sh 7.3
 bash sync-forked.sh -h
 
 # Sync with remote repo (doing this only once per forked repo)
-bash sync-forked.sh <branch-name> /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>
+bash sync-forked.sh [branch-name] /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]
 
 # Sync with remote repo (when branch is master, remote upstream has been added and current directory chosen)
-bash <path-to-the-shell-script>/sync-forked.sh
+bash [path-to-the-shell-script]/sync-forked.sh
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -55,10 +55,10 @@ bash <path-to-the-shell-script>/sync-forked.sh
 
 ```bash
 # Show Help
-bash <path-to-the-shell-script>/git-pull.sh -h
+bash [path-to-the-shell-script]/git-pull.sh -h
 
 # When navigated to the root folder where all repos are located
-bash <path-to-the-shell-script>/git-pull.sh
+bash [path-to-the-shell-script]/git-pull.sh
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -71,10 +71,10 @@ bash <path-to-the-shell-script>/git-pull.sh
 
 ```bash
 # Show Help
-bash <path-to-the-shell-script>/svn-update.sh -h
+bash [path-to-the-shell-script]/svn-update.sh -h
 
 # When navigated to the root folder where all repos are located
-bash <path-to-the-shell-script>/svn-update.sh
+bash [path-to-the-shell-script]/svn-update.sh
 ```
 
 [⬆ back to top](#table-of-contents)
