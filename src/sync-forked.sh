@@ -30,10 +30,10 @@ Help()
   echo "Description: Synchronize forked repository"
   echo ""
   echo "Show this help                         : $SCRIPT_NAME -h"
-  echo "First ever call                        : $SCRIPT_NAME master /var/www/html/<forked-repo-folder-name> https://github.com/<username>/<repo-name>"
-  echo "Every other call                       : $SCRIPT_NAME /var/www/html/<forked-repo-folder-name>"
+  echo "First ever call                        : $SCRIPT_NAME master /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]"
+  echo "Every other call                       : $SCRIPT_NAME /var/www/html/[forked-repo-folder-name]"
   echo "Call in current repo for master branch : $SCRIPT_NAME"
-  echo "Call in current repo for other branch  : $SCRIPT_NAME <branch-name>"
+  echo "Call in current repo for other branch  : $SCRIPT_NAME [branch-name]"
   echo ""
 }
 

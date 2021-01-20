@@ -51,7 +51,7 @@ Help()
 
   echo ""
   echo "Show this help : $SCRIPT_NAME -h"
-  echo "Switch version : $SCRIPT_NAME <php-version>"
+  echo "Switch version : $SCRIPT_NAME [php-version]"
   echo ""
 }
 
