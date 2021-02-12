@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ################################################################################
-# Script name : sync-forked.sh
-# Description : Synchronize forked repository
+# Script name : git-sync.sh
+# Description : Synchronize forked git repository
 # Arguments   : main-branch, folder-location, remote-upstream
 # Author      : 90zlaya
 # Email       : contact@zlatanstajic.com
@@ -27,7 +27,7 @@ Help()
 {
   echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
-  echo "Description: Synchronize forked repository"
+  echo "Description: Synchronize forked git repository"
   echo ""
   echo "Show this help                         : $SCRIPT_NAME -h"
   echo "First ever call                        : $SCRIPT_NAME master /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]"

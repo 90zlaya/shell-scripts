@@ -4,7 +4,7 @@
 ## Table of Contents
 
 * [PHP Switch](#php-switch)
-* [Sync Forked](#sync-forked)
+* [Git Sync](#git-sync)
 * [Git Pull](#git-pull)
 * [SVN Update](#svn-update)
 
@@ -28,21 +28,21 @@ bash php-switch.sh 7.3
 
 [⬆ back to top](#table-of-contents)
 
-## Sync Forked
+## Git Sync
 
-* File: [sync-forked.sh](sync-forked.sh)
+* File: [git-sync.sh](git-sync.sh)
 * Arguments: main-branch, folder-location, remote-upstream
-* Description: Synchronize forked repository
+* Description: Synchronize forked git repository
 
 ```bash
 # Show Help
-bash sync-forked.sh -h
+bash git-sync.sh -h
 
 # Sync with remote repo (doing this only once per forked repo)
-bash sync-forked.sh [branch-name] /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]
+bash git-sync.sh [branch-name] /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]
 
 # Sync with remote repo (when branch is master, remote upstream has been added and current directory chosen)
-bash [path-to-the-shell-script]/sync-forked.sh
+bash [path-to-the-shell-script]/git-sync.sh
 ```
 
 [⬆ back to top](#table-of-contents)
