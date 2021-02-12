@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [PHP Switch](#php-switch)
+* [Git Copy](#git-copy)
 * [Git Sync](#git-sync)
 * [Git Pull](#git-pull)
 * [SVN Update](#svn-update)
@@ -24,6 +25,22 @@ bash php-switch.sh -h
 
 # How to switch to PHP version 7.3
 bash php-switch.sh 7.3
+```
+
+[⬆ back to top](#table-of-contents)
+
+## Git Copy
+
+* File: [git-copy.sh](git-copy.sh)
+* Arguments: start-commit, end-commit, target-directory
+* Description: Copy all differences between two git commits
+
+```bash
+# Show Help
+bash git-copy.sh -h
+
+# Copy all differences between start and end git commit to target directory
+bash git-copy.sh [start-commit] [end-commit] [target-directory]
 ```
 
 [⬆ back to top](#table-of-contents)
