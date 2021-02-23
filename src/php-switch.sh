@@ -115,7 +115,8 @@ done
 
 sudo update-alternatives --set php /usr/bin/php${PHP_VERSION}
 sudo a2enmod php${PHP_VERSION}
-sudo service apache2 restart
+echo "Running systemctl restart apache2"
+sudo systemctl restart apache2
 php --version
 
 End 0
