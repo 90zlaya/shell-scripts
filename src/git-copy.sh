@@ -87,7 +87,7 @@ for i in $(git diff --name-only $START_COMMIT $END_COMMIT)
         cp "$i" "$TARGET_DIRECTORY/$i"
     done
 
-echo "Files copied to TARGET_DIRECTORY directory";
+echo "Files copied to $TARGET_DIRECTORY directory";
 
 End 0
 
