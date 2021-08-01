@@ -7,7 +7,6 @@
 * [Git Copy](#git-copy)
 * [Git Sync](#git-sync)
 * [Git Pull](#git-pull)
-* [SVN Update](#svn-update)
 
 [↩ back to README.md](../README.md#shell-scripts)
 
@@ -76,22 +75,6 @@ bash [path-to-the-shell-script]/git-pull.sh -h
 
 # When navigated to the root folder where all repos are located
 bash [path-to-the-shell-script]/git-pull.sh
-```
-
-[⬆ back to top](#table-of-contents)
-
-## SVN Update
-
-* File: [svn-update.sh](svn-update.sh)
-* Arguments: None
-* Description: Run svn update on all repos from directory
-
-```bash
-# Show Help
-bash [path-to-the-shell-script]/svn-update.sh -h
-
-# When navigated to the root folder where all repos are located
-bash [path-to-the-shell-script]/svn-update.sh
 ```
 
 [⬆ back to top](#table-of-contents)

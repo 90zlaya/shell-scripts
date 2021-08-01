@@ -65,6 +65,9 @@ alias [alias-name]="[command]"
 
 # Force list of aliases to reload in current session
 source ~/.bashrc
+
+# Get help how to use script you aliased
+[alias-name] -h
 ```
 
 Replace `[alias-name]` with your alias and `[command]` with full path to your script (presumably `[base-url]/shell-scripts/deploy/[script-name].sh`). Force list of aliases to reload in current session or restart terminal. 
