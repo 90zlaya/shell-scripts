@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [PHP Switch](#php-switch)
+* [Generate Password](#generate-password)
 * [Git Copy](#git-copy)
 * [Git Sync](#git-sync)
 * [Git Pull](#git-pull)
@@ -24,6 +25,22 @@ bash php-switch.sh -h
 
 # How to switch to PHP version 7.3
 bash php-switch.sh 7.3
+```
+
+[⬆ back to top](#table-of-contents)
+
+## Generate Password
+
+* File: [generate-password.sh](generate-password.sh)
+* Arguments: None
+* Description: Generate strong and secure password
+
+```bash
+# Show Help
+bash generate-password.sh -h
+
+# How to generate password
+bash generate-password.sh
 ```
 
 [⬆ back to top](#table-of-contents)
