@@ -45,7 +45,7 @@ GetParameters()
 {
   if [ $# -eq 1 ]
   then
-    if [ "x$1" = "x-h" ]
+    if [ "$1" = "-h" ]
     then
       Help
       End 0
