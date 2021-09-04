@@ -41,12 +41,21 @@ GetParameters()
 {
   if [ $# -eq 1 ]
   then
-    if [ "x$1" = "x-h" ]
+    if [ "$1" = "-h" ]
     then
       Help
       End 0
     fi
   fi
+}
+
+################################################################################
+# Generate random string for given range
+################################################################################
+
+GenerateRandomString()
+{
+  echo $(cat /dev/urandom | tr -dc $1 | fold -w 5 | head -n 1)
 }
 
 ################################################################################
@@ -76,7 +85,13 @@ echo "Script $SCRIPT_NAME starting..."
 
 GetParameters $@
 
-echo "Password will be displayed here"
+NUMBERS=$(GenerateRandomString '0-9')
+SPECIAL_CHARACTERS=$(GenerateRandomString '!#$%&()+,-.:=?@[\]_{|}~')
+ALPHABET_LOWERCASE=$(GenerateRandomString 'a-z')
+ALPHABET_UPPERCASE=$(GenerateRandomString 'A-Z')
+GENERATED_PASSWORD="$NUMBERS$ALPHABET_LOWERCASE$SPECIAL_CHARACTERS$ALPHABET_UPPERCASE"
+
+echo $GENERATED_PASSWORD && echo $GENERATED_PASSWORD | xclip -selection clipboard
 
 End 0
 
