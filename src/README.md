@@ -23,8 +23,8 @@ You would have to update this script and list versions of PHP installed on your 
 # Show Help
 bash php-switch.sh -h
 
-# How to switch to PHP version 7.3
-bash php-switch.sh 7.3
+# How to switch to PHP version 8.1
+bash php-switch.sh 8.1
 ```
 
 [⬆ back to top](#table-of-contents)

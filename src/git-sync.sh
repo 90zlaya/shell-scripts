@@ -25,7 +25,6 @@ REMOTE_UPSTREAM=$3
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Synchronize forked git repository"
   echo ""
@@ -34,7 +33,6 @@ Help()
   echo "Every other call                       : $SCRIPT_NAME /var/www/html/[forked-repo-folder-name]"
   echo "Call in current repo for master branch : $SCRIPT_NAME"
   echo "Call in current repo for other branch  : $SCRIPT_NAME [branch-name]"
-  echo ""
 }
 
 ################################################################################
@@ -61,12 +59,12 @@ End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
@@ -75,9 +73,8 @@ End()
 # Executing all
 ################################################################################
 
-echo ""
 echo "Script $SCRIPT_NAME starting..."
-
+echo ""
 GetParameters $@
 
 # Check if using main master branch

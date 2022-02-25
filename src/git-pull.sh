@@ -22,13 +22,11 @@ SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Run git pull on all repos from directory"
   echo ""
   echo "Show this help   : $SCRIPT_NAME -h"
   echo "Update git repos : $SCRIPT_NAME"
-  echo ""
 }
 
 ################################################################################
@@ -55,12 +53,12 @@ End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
@@ -85,23 +83,20 @@ PrintMessage() {
 ################################################################################
 
 GitPull() {
-  # Parameter #1 represents repo name
-  REPO_NAME=$1
-
-  if [ -d ${REPO_NAME} ]
+  if [ -d ${1} ]
   then
     PrintMessage "=============================================================>"
     echo "Entering directory"
     cd ${repo}
     pwd
     if [ -d .git ]
-    then 
+    then
       echo "Pulling..."
       git pull
       git status
       git log -n 1
     else
-      echo 'Not git repo'
+      echo "Not git repo"
     fi
     cd ../
     echo "Leaving directory"
@@ -113,15 +108,11 @@ GitPull() {
 # Executing all
 ################################################################################
 
-echo ""
 echo "Script $SCRIPT_NAME starting..."
-
+echo ""
 GetParameters $@
-
-# List all repos to variable
 REPOS=$(ls)
 
-# Loop trough all repos
 for repo in ${REPOS[*]}
 do
   GitPull ${repo}

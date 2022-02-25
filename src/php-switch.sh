@@ -17,7 +17,7 @@ SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
 PHP_VERSION=$1
 
-# PHP versions installed on your OS (remove # do declare as installed)
+# PHP versions installed on your OS (remove # to declare as installed)
 PHP_VERSIONS_INSTALLED=(
   #"5.6"
   #"7.0"
@@ -26,6 +26,7 @@ PHP_VERSIONS_INSTALLED=(
   #"7.3"
   #"7.4"
   #"8.0"
+  #"8.1"
 )
 
 ################################################################################
@@ -34,10 +35,10 @@ PHP_VERSIONS_INSTALLED=(
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Switch main version of PHP on OS"
-  
+  echo ""
+
   if [ ${#PHP_VERSIONS_INSTALLED[@]} -eq 0 ]
   then
     echo "Update PHP_VERSIONS_INSTALLED in $SCRIPT_DIR/$SCRIPT_NAME"
@@ -53,7 +54,6 @@ Help()
   echo ""
   echo "Show this help : $SCRIPT_NAME -h"
   echo "Switch version : $SCRIPT_NAME [php-version]"
-  echo ""
 }
 
 ################################################################################
@@ -64,7 +64,7 @@ GetParameters()
 {
   if [ $# -eq 1 ]
   then
-    if [ "$1" = "-h" ]
+    if [ "x$1" = "x-h" ]
     then
       Help
       End 0
@@ -89,12 +89,12 @@ End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
@@ -103,9 +103,8 @@ End()
 # Executing all
 ################################################################################
 
-echo ""
 echo "Script $SCRIPT_NAME starting..."
-
+echo ""
 GetParameters $@
 
 for version in ${PHP_VERSIONS_INSTALLED[*]}
