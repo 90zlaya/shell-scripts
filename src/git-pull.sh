@@ -46,24 +46,6 @@ GetParameters()
 }
 
 ################################################################################
-# Shell terminates
-################################################################################
-
-End()
-{
-  if [ $1 -eq 0 ]
-  then
-    echo ""
-    echo "Script $SCRIPT_NAME finishing OK"
-    exit 0
-  else
-    echo ""
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
-    exit 1
-  fi
-}
-
-################################################################################
 # Print message in certain manner
 ################################################################################
 
@@ -72,10 +54,21 @@ PrintMessage() {
   GREEN="\033[0;32m"
   # Define no-color
   NC="\033[0m"
+  # Line to be printed in console
+  LINE="============================================================="
   # Parameter #1 represents message sting to be printed
   MESSAGE_CONTENT=$1
 
-  echo -e "${GREEN}${MESSAGE_CONTENT}${NC}"
+  if [ $1 -eq 1 ]
+  then
+    echo -e "${GREEN}${LINE}>${NC}"
+  elif [ $1 -eq 0 ]
+  then
+    echo -e "${GREEN}<${LINE}${NC}"
+  else
+    echo -e "${GREEN}${1}${NC}"
+  fi
+
 }
 
 ################################################################################
@@ -85,7 +78,7 @@ PrintMessage() {
 GitPull() {
   if [ -d ${1} ]
   then
-    PrintMessage "=============================================================>"
+    PrintMessage 1
     echo "Entering directory"
     cd ${repo}
     pwd
@@ -100,7 +93,25 @@ GitPull() {
     fi
     cd ../
     echo "Leaving directory"
-    PrintMessage "<============================================================="
+    PrintMessage 0
+  fi
+}
+
+################################################################################
+# Shell terminates
+################################################################################
+
+End()
+{
+  if [ $1 -eq 0 ]
+  then
+    echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
+    exit 0
+  else
+    echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
+    exit 1
   fi
 }
 
