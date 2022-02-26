@@ -3,61 +3,33 @@
 ################################################################################
 # Script name : git-pull.sh
 # Description : Run git pull on all repos from directory
-# Arguments   : /
+# Parameters  : /
 # Author      : 90zlaya
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Variables
 ################################################################################
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 ################################################################################
-# Show help
+# Function    : PrintMessage
+# Description : Print message in certain manner
+# Parameters  : message-content
 ################################################################################
 
-Help()
+PrintMessage()
 {
-  echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
-  echo "Description: Run git pull on all repos from directory"
-  echo ""
-  echo "Show this help   : $SCRIPT_NAME -h"
-  echo "Update git repos : $SCRIPT_NAME"
-}
-
-################################################################################
-# Getting parameters
-################################################################################
-
-GetParameters()
-{
-  if [ $# -eq 1 ]
-  then
-    if [ "$1" = "-h" ]
-    then
-      Help
-      End 0
-    fi
-  fi
-}
-
-################################################################################
-# Print message in certain manner
-################################################################################
-
-PrintMessage() {
-  # Define color
+  # Defines green color
   GREEN="\033[0;32m"
-  # Define no-color
+  # Defines no-color
   NC="\033[0m"
   # Line to be printed in console
   LINE="============================================================="
-  # Parameter #1 represents message sting to be printed
-  MESSAGE_CONTENT=$1
 
   if [ $1 -eq 1 ]
   then
@@ -72,11 +44,14 @@ PrintMessage() {
 }
 
 ################################################################################
-# Git pull
+# Function    : GitPull
+# Description : Pulls changes from git repository
+# Parameters  : repository
 ################################################################################
 
-GitPull() {
-  if [ -d ${1} ]
+GitPull()
+{
+  if [ -d $1 ]
   then
     PrintMessage 1
     echo "Entering directory"
@@ -98,7 +73,42 @@ GitPull() {
 }
 
 ################################################################################
-# Shell terminates
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
+################################################################################
+
+Help()
+{
+  echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
+  echo "Description: Run git pull on all repos from directory"
+  echo ""
+  echo "Show this help   : $SCRIPT_NAME -h"
+  echo "Update git repos : $SCRIPT_NAME"
+}
+
+################################################################################
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h
+################################################################################
+
+GetArguments()
+{
+  if [ $# -eq 1 ]
+  then
+    if [ "$1" = "-h" ]
+    then
+      Help
+      End 0
+    fi
+  fi
+}
+
+################################################################################
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
@@ -116,12 +126,12 @@ End()
 }
 
 ################################################################################
-# Executing all
+# Execution
 ################################################################################
 
 echo "Script $SCRIPT_NAME starting..."
 echo ""
-GetParameters $@
+GetArguments $@
 REPOS=$(ls)
 
 for repo in ${REPOS[*]}
