@@ -3,24 +3,31 @@
 ################################################################################
 # Script name : git-sync.sh
 # Description : Synchronize forked git repository
-# Arguments   : main-branch, folder-location, remote-upstream
+# Parameters  : main-branch folder-location remote-upstream
 # Author      : 90zlaya
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Parameters
 ################################################################################
 
-SCRIPT_NAME="`basename $(readlink -f $0)`"
-SCRIPT_DIR="`dirname $(readlink -f $0)`"
 MAIN_BRANCH=$1
 FOLDER_LOCATION=$2
 REMOTE_UPSTREAM=$3
 
 ################################################################################
-# Show help
+# Variables
+################################################################################
+
+SCRIPT_NAME="`basename $(readlink -f $0)`"
+SCRIPT_DIR="`dirname $(readlink -f $0)`"
+
+################################################################################
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
 ################################################################################
 
 Help()
@@ -36,10 +43,12 @@ Help()
 }
 
 ################################################################################
-# Getting parameters
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h | main-branch folder-location remote-upstream
 ################################################################################
 
-GetParameters()
+GetArguments()
 {
   if [ $# -eq 1 ]
   then
@@ -52,7 +61,9 @@ GetParameters()
 }
 
 ################################################################################
-# Shell terminates
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
@@ -70,12 +81,12 @@ End()
 }
 
 ################################################################################
-# Executing all
+# Execution
 ################################################################################
 
 echo "Script $SCRIPT_NAME starting..."
 echo ""
-GetParameters $@
+GetArguments $@
 
 # Check if using main master branch
 if [ "$MAIN_BRANCH" = "" ]

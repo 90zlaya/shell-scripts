@@ -64,7 +64,7 @@ bash git-copy.sh [start-commit] [end-commit] [target-directory]
 ## Git Sync
 
 * File: [git-sync.sh](git-sync.sh)
-* Parameters: main-branch, folder-location, remote-upstream
+* Parameters: main-branch folder-location remote-upstream
 * Description: Synchronize forked git repository
 
 ```bash
