@@ -14,7 +14,7 @@
 ## PHP Switch
 
 * File: [php-switch.sh](php-switch.sh)
-* Arguments: php-version
+* Parameters: php-version
 * Description: Switch main version of PHP on OS
 
 You would have to update this script and list versions of PHP installed on your operating system inside `PHP_VERSIONS_INSTALLED` array in order to properly run it.
@@ -32,7 +32,7 @@ bash php-switch.sh 8.1
 ## Generate Password
 
 * File: [generate-password.sh](generate-password.sh)
-* Arguments: None
+* Parameters: None
 * Description: Generate strong and secure password
 
 ```bash
@@ -48,7 +48,7 @@ bash generate-password.sh
 ## Git Copy
 
 * File: [git-copy.sh](git-copy.sh)
-* Arguments: start-commit, end-commit, target-directory
+* Parameters: start-commit end-commit target-directory
 * Description: Copy all differences between two git commits
 
 ```bash
@@ -64,7 +64,7 @@ bash git-copy.sh [start-commit] [end-commit] [target-directory]
 ## Git Sync
 
 * File: [git-sync.sh](git-sync.sh)
-* Arguments: main-branch, folder-location, remote-upstream
+* Parameters: main-branch, folder-location, remote-upstream
 * Description: Synchronize forked git repository
 
 ```bash
@@ -83,7 +83,7 @@ bash [path-to-the-shell-script]/git-sync.sh
 ## Git Pull
 
 * File: [git-pull.sh](git-pull.sh)
-* Arguments: None
+* Parameters: None
 * Description: Run git pull on all repos from directory
 
 ```bash
