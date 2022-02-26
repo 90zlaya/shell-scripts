@@ -3,64 +3,79 @@
 ################################################################################
 # Script name : generate-password.sh
 # Description : Generate strong and secure password
-# Arguments   : /
+# Parameters  : /
 # Author      : 90zlaya
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Variables
 ################################################################################
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 ################################################################################
-# Show help
-################################################################################
-
-Help()
-{
-  echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
-  echo "Description: Generate strong and secure password"
-  echo ""
-  echo "Show this help : $SCRIPT_NAME -h"
-}
-
-################################################################################
-# Getting parameters
-################################################################################
-
-GetParameters()
-{
-  if [ $# -eq 1 ]
-  then
-    if [ "$1" = "-h" ]
-    then
-      Help
-      End 0
-    fi
-  fi
-}
-
-################################################################################
-# Generate random string for given range
+# Function    : GenerateRandomString
+# Description : Generates random string for given type
+# Parameters  : type
 ################################################################################
 
 GenerateRandomString()
 {
-  echo $(cat /dev/urandom | tr -dc $1 | fold -w 5 | head -n 1)
+  if [ "$1" = "numbers" ]
+  then
+    RANGE="0-9"
+  elif [ "$1" = "characters" ]
+  then
+    RANGE="!#$%&()+,-.:=?@[\]_{|}~"
+  elif [ "$1" = "letters-uppercase" ]
+  then
+    RANGE="A-Z"
+  elif [ "$1" = "letters-lowercase" ]
+  then
+    RANGE="a-z"
+  fi
+
+  echo $(cat /dev/urandom | tr -dc $RANGE | fold -w 5 | head -n 1)
 }
 
 ################################################################################
-# Handles proceeding dialog
+# Function    : GeneratePassword
+# Description : Generates password
+# Parameters  : /
+################################################################################
+
+GeneratePassword()
+{
+  GENERATE_RANDOM_STRING_TYPES=(
+    "numbers"
+    "characters"
+    "letters-lowercase"
+    "letters-uppercase"
+  )
+  GENERATE_RANDOM_STRING_TYPES=( $(shuf -e "${GENERATE_RANDOM_STRING_TYPES[@]}") )
+  GENERATED_PASSWORD=''
+
+  for type in ${GENERATE_RANDOM_STRING_TYPES[*]}
+  do
+    GENERATED_PASSWORD+=$(GenerateRandomString $type)
+  done
+
+  echo $GENERATED_PASSWORD
+}
+
+################################################################################
+# Function    : DoYouWishToProceed
+# Description : Handles proceeding dialog
+# Parameters  : user-input
 ################################################################################
 
 DoYouWishToProceed()
 {
   while true; do
-    read -p "Do you wish to proceed? (y/n): " yn
+    read -p "Do you wish to proceed? [Y/n]: " yn
     case $yn in
       [Yy]* )
         echo "1"
@@ -73,7 +88,41 @@ DoYouWishToProceed()
 }
 
 ################################################################################
-# Shell terminates
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
+################################################################################
+
+Help()
+{
+  echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
+  echo "Description: Generate strong and secure password"
+  echo ""
+  echo "Show this help : $SCRIPT_NAME -h"
+}
+
+################################################################################
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h
+################################################################################
+
+GetArguments()
+{
+  if [ $# -eq 1 ]
+  then
+    if [ "$1" = "-h" ]
+    then
+      Help
+      End 0
+    fi
+  fi
+}
+
+################################################################################
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
@@ -91,18 +140,13 @@ End()
 }
 
 ################################################################################
-# Executing all
+# Execution
 ################################################################################
 
 echo "Script $SCRIPT_NAME starting..."
 echo ""
-GetParameters $@
-
-NUMBERS=$(GenerateRandomString "0-9")
-SPECIAL_CHARACTERS=$(GenerateRandomString "!#$%&()+,-.:=?@[\]_{|}~")
-ALPHABET_LOWERCASE=$(GenerateRandomString "a-z")
-ALPHABET_UPPERCASE=$(GenerateRandomString "A-Z")
-GENERATED_PASSWORD="$NUMBERS$ALPHABET_LOWERCASE$SPECIAL_CHARACTERS$ALPHABET_UPPERCASE"
+GetArguments $@
+GENERATED_PASSWORD=$(GeneratePassword)
 
 echo $GENERATED_PASSWORD
 echo ""
@@ -117,7 +161,6 @@ then
   else
     echo $GENERATED_PASSWORD | xclip -selection clipboard
   fi
-
 fi
 
 End 0
