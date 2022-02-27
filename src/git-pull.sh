@@ -4,7 +4,7 @@
 # Script name : git-pull.sh
 # Description : Run git pull on all repos from directory
 # Parameters  : /
-# Author      : 90zlaya
+# Author      : Zlatan Stajic
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################
@@ -40,7 +40,6 @@ PrintMessage()
   else
     echo -e "${GREEN}${1}${NC}"
   fi
-
 }
 
 ################################################################################

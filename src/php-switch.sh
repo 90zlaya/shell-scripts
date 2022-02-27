@@ -4,7 +4,7 @@
 # Script name : php-switch.sh
 # Description : Switch main version of PHP on OS
 # Parameters  : php-version
-# Author      : 90zlaya
+# Author      : Zlatan Stajic
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################

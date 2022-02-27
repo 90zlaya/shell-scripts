@@ -4,7 +4,7 @@
 # Script name : git-sync.sh
 # Description : Synchronize forked git repository
 # Parameters  : main-branch folder-location remote-upstream
-# Author      : 90zlaya
+# Author      : Zlatan Stajic
 # Email       : contact@zlatanstajic.com
 # Licence     : MIT
 ################################################################################
