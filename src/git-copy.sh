@@ -25,6 +25,19 @@ SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 ################################################################################
+# Function    : DisplayDirectoryName
+# Description : Displays directory name
+# Parameters  : /
+################################################################################
+
+DisplayDirectoryName()
+{
+  CURRENT_WORKING_DIRECTORY=`pwd`
+  DIRECTORY_NAME=`basename "$CURRENT_WORKING_DIRECTORY"`
+  echo -e "Located in directory: \e[1m$DIRECTORY_NAME\e[0m\n"
+}
+
+################################################################################
 # Function    : IsDirectoryGitRepository
 # Description : Checks if directory is git repository
 # Parameters  : /
@@ -32,6 +45,8 @@ SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 IsDirectoryGitRepository()
 {
+  echo $(DisplayDirectoryName)
+
   if [ -d .git ]
   then
     return 1
@@ -75,7 +90,7 @@ GetArguments()
     fi
   elif [ $# -eq 3 ]
   then
-    echo "Correct parameters"
+    return 1
   else
     Help
     End 1 "Incorrect parameters"

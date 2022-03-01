@@ -69,7 +69,7 @@ GeneratePassword()
 ################################################################################
 # Function    : DoYouWishToProceed
 # Description : Handles proceeding dialog
-# Parameters  : user-input
+# Parameters  : /
 ################################################################################
 
 DoYouWishToProceed()
