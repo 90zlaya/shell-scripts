@@ -4,8 +4,7 @@
 # Script name : dev-setup.sh
 # Description : Development setup for git
 # Parameters  : issue-number issue-name
-# Author      : Zlatan Stajic
-# Email       : contact@zlatanstajic.com
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 
