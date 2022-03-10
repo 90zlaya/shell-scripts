@@ -4,8 +4,7 @@
 # Script name : git-copy.sh
 # Description : Copy all differences between two git commits
 # Parameters  : start-commit end-commit target-directory
-# Author      : Zlatan Stajic
-# Email       : contact@zlatanstajic.com
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 

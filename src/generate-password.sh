@@ -4,8 +4,7 @@
 # Script name : generate-password.sh
 # Description : Generate strong and secure password
 # Parameters  : /
-# Author      : Zlatan Stajic
-# Email       : contact@zlatanstajic.com
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 
