@@ -3,21 +3,25 @@
 ################################################################################
 # Script name : php-switch.sh
 # Description : Switch main version of PHP on OS
-# Arguments   : php-version
-# Author      : 90zlaya
-# Email       : contact@zlatanstajic.com
+# Parameters  : php-version
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Parameters
+################################################################################
+
+PHP_VERSION=$1
+
+################################################################################
+# Variables
 ################################################################################
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
-PHP_VERSION=$1
 
-# PHP versions installed on your OS (remove # do declare as installed)
+# PHP versions installed on your OS (remove # to declare as installed)
 PHP_VERSIONS_INSTALLED=(
   #"5.6"
   #"7.0"
@@ -26,18 +30,33 @@ PHP_VERSIONS_INSTALLED=(
   #"7.3"
   #"7.4"
   #"8.0"
+  #"8.1"
 )
 
 ################################################################################
-# Show help
+# Function    : CurrentPHPVersion
+# Description : Shows current php version
+# Parameters  : /
+################################################################################
+
+CurrentPHPVersion()
+{
+  CURRENT_PHP_VERSION=$(php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d".")
+  echo -e "Current PHP version: \e[1m$CURRENT_PHP_VERSION\e[0m"
+}
+
+################################################################################
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
 ################################################################################
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Switch main version of PHP on OS"
-  
+  echo ""
+
   if [ ${#PHP_VERSIONS_INSTALLED[@]} -eq 0 ]
   then
     echo "Update PHP_VERSIONS_INSTALLED in $SCRIPT_DIR/$SCRIPT_NAME"
@@ -47,30 +66,31 @@ Help()
     do
       INSTALLED+="${version} "
     done
-    echo "Installed versions: $INSTALLED"
+    echo -e "Installed versions: \e[1m$INSTALLED\e[0m"
   fi
 
+  CurrentPHPVersion
   echo ""
   echo "Show this help : $SCRIPT_NAME -h"
   echo "Switch version : $SCRIPT_NAME [php-version]"
-  echo ""
 }
 
 ################################################################################
-# Getting parameters
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h | php-version
 ################################################################################
 
-GetParameters()
+GetArguments()
 {
   if [ $# -eq 1 ]
   then
-    if [ "$1" = "-h" ]
+    if [ "x$1" = "x-h" ]
     then
       Help
       End 0
-    fi
     # Checking PHP version
-    if [[ ! " ${PHP_VERSIONS_INSTALLED[@]} " =~ " ${PHP_VERSION} " ]]
+    elif [[ ! " ${PHP_VERSIONS_INSTALLED[@]} " =~ " ${PHP_VERSION} " ]]
     then
       Help
       End 1 "Incorrect parameters: Non existing PHP version"
@@ -83,30 +103,32 @@ GetParameters()
 
 ################################################################################
 # Shell terminates
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
 
 ################################################################################
-# Executing all
+# Execution
 ################################################################################
 
-echo ""
 echo "Script $SCRIPT_NAME starting..."
-
-GetParameters $@
+echo ""
+GetArguments $@
 
 for version in ${PHP_VERSIONS_INSTALLED[*]}
 do
@@ -115,10 +137,10 @@ done
 
 sudo update-alternatives --set php /usr/bin/php${PHP_VERSION}
 sudo a2enmod php${PHP_VERSION}
-echo "Running systemctl restart apache2"
+echo ""
+echo "Running systemctl restart apache2..."
 sudo systemctl restart apache2
-php --version
-
+CurrentPHPVersion
 End 0
 
 ################################################################################

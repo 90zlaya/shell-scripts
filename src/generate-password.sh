@@ -3,41 +3,110 @@
 ################################################################################
 # Script name : generate-password.sh
 # Description : Generate strong and secure password
-# Arguments   : /
-# Author      : 90zlaya
-# Email       : contact@zlatanstajic.com
+# Parameters  : /
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Variables
 ################################################################################
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
-START_COMMIT=$1
-END_COMMIT=$2
-TARGET_DIRECTORY=$3
 
 ################################################################################
-# Show help
+# Function    : GenerateRandomString
+# Description : Generates random string for given type
+# Parameters  : type
+################################################################################
+
+GenerateRandomString()
+{
+  if [ "$1" = "numbers" ]
+  then
+    RANGE="0-9"
+  elif [ "$1" = "characters" ]
+  then
+    RANGE="!#$%&()+,-.:=?@[\]_{|}~"
+  elif [ "$1" = "letters-uppercase" ]
+  then
+    RANGE="A-Z"
+  elif [ "$1" = "letters-lowercase" ]
+  then
+    RANGE="a-z"
+  fi
+
+  echo $(cat /dev/urandom | tr -dc $RANGE | fold -w 5 | head -n 1)
+}
+
+################################################################################
+# Function    : GeneratePassword
+# Description : Generates password
+# Parameters  : /
+################################################################################
+
+GeneratePassword()
+{
+  GENERATE_RANDOM_STRING_TYPES=(
+    "numbers"
+    "characters"
+    "letters-lowercase"
+    "letters-uppercase"
+  )
+  GENERATE_RANDOM_STRING_TYPES=( $(shuf -e "${GENERATE_RANDOM_STRING_TYPES[@]}") )
+  GENERATED_PASSWORD=''
+
+  for type in ${GENERATE_RANDOM_STRING_TYPES[*]}
+  do
+    GENERATED_PASSWORD+=$(GenerateRandomString $type)
+  done
+
+  echo $GENERATED_PASSWORD
+}
+
+################################################################################
+# Function    : DoYouWishToProceed
+# Description : Handles proceeding dialog
+# Parameters  : /
+################################################################################
+
+DoYouWishToProceed()
+{
+  while true; do
+    read -p "Do you wish to proceed? [Y/n]: " yn
+    case $yn in
+      [Yy]* )
+        echo "1"
+      break;;
+      [Nn]* )
+        echo "0"
+      break;;
+    esac
+  done
+}
+
+################################################################################
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
 ################################################################################
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Generate strong and secure password"
   echo ""
   echo "Show this help : $SCRIPT_NAME -h"
-  echo ""
 }
 
 ################################################################################
-# Getting parameters
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h
 ################################################################################
 
-GetParameters()
+GetArguments()
 {
   if [ $# -eq 1 ]
   then
@@ -50,48 +119,48 @@ GetParameters()
 }
 
 ################################################################################
-# Generate random string for given range
-################################################################################
-
-GenerateRandomString()
-{
-  echo $(cat /dev/urandom | tr -dc $1 | fold -w 5 | head -n 1)
-}
-
-################################################################################
-# Shell terminates
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
 
 ################################################################################
-# Executing all
+# Execution
 ################################################################################
 
-echo ""
 echo "Script $SCRIPT_NAME starting..."
+echo ""
+GetArguments $@
+GENERATED_PASSWORD=$(GeneratePassword)
 
-GetParameters $@
+echo $GENERATED_PASSWORD
+echo ""
+echo "Will copy password to clipboard"
 
-NUMBERS=$(GenerateRandomString '0-9')
-SPECIAL_CHARACTERS=$(GenerateRandomString '!#$%&()+,-.:=?@[\]_{|}~')
-ALPHABET_LOWERCASE=$(GenerateRandomString 'a-z')
-ALPHABET_UPPERCASE=$(GenerateRandomString 'A-Z')
-GENERATED_PASSWORD="$NUMBERS$ALPHABET_LOWERCASE$SPECIAL_CHARACTERS$ALPHABET_UPPERCASE"
-
-echo $GENERATED_PASSWORD && echo $GENERATED_PASSWORD | xclip -selection clipboard
+if [ "$(DoYouWishToProceed)" -eq 1 ]
+then
+  # Checks if xclip is installed
+  if ! command -v xclip -selection clipboard &> /dev/null
+  then
+    END 1 "xclip could not be found"
+  else
+    echo $GENERATED_PASSWORD | xclip -selection clipboard
+  fi
+fi
 
 End 0
 

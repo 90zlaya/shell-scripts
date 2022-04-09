@@ -1,8 +1,9 @@
 # List of Available Scripts
-> This is list of available scripts you may use on any Unix-like system
+> This is list of available scripts you may use on any Unix-like system.
 
 ## Table of Contents
 
+* [Dev Setup](#dev-setup)
 * [PHP Switch](#php-switch)
 * [Generate Password](#generate-password)
 * [Git Copy](#git-copy)
@@ -11,10 +12,31 @@
 
 [↩ back to README.md](../README.md#shell-scripts)
 
+## Dev Setup
+
+* File: [dev-setup.sh](dev-setup.sh)
+* Parameters: issue-number issue-name
+* Description: Development setup for git
+
+If you're using this shell script to setup development for git repository, then you're ready to go by default. You can change several parameters based on personal or team preferences.
+
+1. Each branch will have prefix, which is, by default, *issues*. If you want to change this prefix, go to `BRANCH_PREFIX` and add your value to it.
+1. Upon it's completion, script will offer helper text to be copy/pasted to issue tracking software. First one is `REQUEST_PREFIX` which will be prefix for title on pull requests you're going to make, second one is `ISSUE_BASE_PATH` which can be left empty. When not empty, it will offer description for pull request. Both helper texts won't affect script execution in any way other than being there for the user.
+
+```bash
+# Show Help
+bash dev-setup.sh -h
+
+# How to setup development for issue #1 Example issue name
+bash dev-setup.sh 1 "Example issue name"
+```
+
+[⬆ back to top](#table-of-contents)
+
 ## PHP Switch
 
 * File: [php-switch.sh](php-switch.sh)
-* Arguments: php-version
+* Parameters: php-version
 * Description: Switch main version of PHP on OS
 
 You would have to update this script and list versions of PHP installed on your operating system inside `PHP_VERSIONS_INSTALLED` array in order to properly run it.
@@ -23,8 +45,8 @@ You would have to update this script and list versions of PHP installed on your 
 # Show Help
 bash php-switch.sh -h
 
-# How to switch to PHP version 7.3
-bash php-switch.sh 7.3
+# How to switch to PHP version 8.1
+bash php-switch.sh 8.1
 ```
 
 [⬆ back to top](#table-of-contents)
@@ -32,7 +54,7 @@ bash php-switch.sh 7.3
 ## Generate Password
 
 * File: [generate-password.sh](generate-password.sh)
-* Arguments: None
+* Parameters: None
 * Description: Generate strong and secure password
 
 ```bash
@@ -48,7 +70,7 @@ bash generate-password.sh
 ## Git Copy
 
 * File: [git-copy.sh](git-copy.sh)
-* Arguments: start-commit, end-commit, target-directory
+* Parameters: start-commit end-commit target-directory
 * Description: Copy all differences between two git commits
 
 ```bash
@@ -64,7 +86,7 @@ bash git-copy.sh [start-commit] [end-commit] [target-directory]
 ## Git Sync
 
 * File: [git-sync.sh](git-sync.sh)
-* Arguments: main-branch, folder-location, remote-upstream
+* Parameters: main-branch folder-location remote-upstream
 * Description: Synchronize forked git repository
 
 ```bash
@@ -83,7 +105,7 @@ bash [path-to-the-shell-script]/git-sync.sh
 ## Git Pull
 
 * File: [git-pull.sh](git-pull.sh)
-* Arguments: None
+* Parameters: None
 * Description: Run git pull on all repos from directory
 
 ```bash

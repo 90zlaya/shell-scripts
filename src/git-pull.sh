@@ -3,39 +3,95 @@
 ################################################################################
 # Script name : git-pull.sh
 # Description : Run git pull on all repos from directory
-# Arguments   : /
-# Author      : 90zlaya
-# Email       : contact@zlatanstajic.com
+# Parameters  : /
+# Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
 
 ################################################################################
-# Globals
+# Variables
 ################################################################################
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
 
 ################################################################################
-# Show help
+# Function    : PrintMessage
+# Description : Print message in certain manner
+# Parameters  : message-content
+################################################################################
+
+PrintMessage()
+{
+  # Defines green color
+  GREEN="\033[0;32m"
+  # Defines no-color
+  NC="\033[0m"
+  # Line to be printed in console
+  LINE="============================================================="
+
+  if [ $1 -eq 1 ]
+  then
+    echo -e "${GREEN}${LINE}>${NC}"
+  elif [ $1 -eq 0 ]
+  then
+    echo -e "${GREEN}<${LINE}${NC}"
+  else
+    echo -e "${GREEN}${1}${NC}"
+  fi
+}
+
+################################################################################
+# Function    : GitPull
+# Description : Pulls changes from git repository
+# Parameters  : repository
+################################################################################
+
+GitPull()
+{
+  if [ -d $1 ]
+  then
+    PrintMessage 1
+    echo "Entering directory"
+    cd ${repo}
+    pwd
+    if [ -d .git ]
+    then
+      echo "Pulling..."
+      git pull
+      git status
+      git log -n 1
+    else
+      echo "Not git repo"
+    fi
+    cd ../
+    echo "Leaving directory"
+    PrintMessage 0
+  fi
+}
+
+################################################################################
+# Function    : Help
+# Description : Shows help text for script
+# Parameters  : /
 ################################################################################
 
 Help()
 {
-  echo ""
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
   echo "Description: Run git pull on all repos from directory"
   echo ""
   echo "Show this help   : $SCRIPT_NAME -h"
   echo "Update git repos : $SCRIPT_NAME"
-  echo ""
 }
 
 ################################################################################
-# Getting parameters
+# Function    : GetArguments
+# Description : Gets arguments passed to the script
+# Parameters  : -h
 ################################################################################
 
-GetParameters()
+GetArguments()
 {
   if [ $# -eq 1 ]
   then
@@ -48,80 +104,34 @@ GetParameters()
 }
 
 ################################################################################
-# Shell terminates
+# Function    : End
+# Description : Terminates shell script
+# Parameters  : is-with-error [error-text]
 ################################################################################
 
 End()
 {
   if [ $1 -eq 0 ]
   then
-    echo "Script $SCRIPT_NAME finishing OK"
     echo ""
+    echo "Script $SCRIPT_NAME finishing OK"
     exit 0
   else
-    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     echo ""
+    echo -e "Script $SCRIPT_NAME finishing with \e[1mERROR [$2]\e[0m"
     exit 1
   fi
 }
 
 ################################################################################
-# Print message in certain manner
+# Execution
 ################################################################################
 
-PrintMessage() {
-  # Define color
-  GREEN="\033[0;32m"
-  # Define no-color
-  NC="\033[0m"
-  # Parameter #1 represents message sting to be printed
-  MESSAGE_CONTENT=$1
-
-  echo -e "${GREEN}${MESSAGE_CONTENT}${NC}"
-}
-
-################################################################################
-# Git pull
-################################################################################
-
-GitPull() {
-  # Parameter #1 represents repo name
-  REPO_NAME=$1
-
-  if [ -d ${REPO_NAME} ]
-  then
-    PrintMessage "=============================================================>"
-    echo "Entering directory"
-    cd ${repo}
-    pwd
-    if [ -d .git ]
-    then 
-      echo "Pulling..."
-      git pull
-      git status
-      git log -n 1
-    else
-      echo 'Not git repo'
-    fi
-    cd ../
-    echo "Leaving directory"
-    PrintMessage "<============================================================="
-  fi
-}
-
-################################################################################
-# Executing all
-################################################################################
-
-echo ""
 echo "Script $SCRIPT_NAME starting..."
-
-GetParameters $@
-
-# List all repos to variable
+echo ""
+GetArguments $@
 REPOS=$(ls)
 
-# Loop trough all repos
 for repo in ${REPOS[*]}
 do
   GitPull ${repo}

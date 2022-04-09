@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ################################################################################
-# Script name : git-copy.sh
-# Description : Copy all differences between two git commits
-# Parameters  : start-commit end-commit target-directory
+# Script name : dev-setup.sh
+# Description : Development setup for git
+# Parameters  : issue-number issue-name
 # Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
@@ -12,9 +12,8 @@
 # Parameters
 ################################################################################
 
-START_COMMIT=$1
-END_COMMIT=$2
-TARGET_DIRECTORY=$3
+ISSUE_NUMBER=$1
+ISSUE_NAME=$2
 
 ################################################################################
 # Variables
@@ -22,6 +21,29 @@ TARGET_DIRECTORY=$3
 
 SCRIPT_NAME="`basename $(readlink -f $0)`"
 SCRIPT_DIR="`dirname $(readlink -f $0)`"
+
+# Prefix for branch name
+BRANCH_PREFIX="issues"
+
+# Prefix for pull/merge request name
+REQUEST_PREFIX="refs:"
+
+# Path to the issue (can be empty)
+ISSUE_BASE_PATH=""
+
+################################################################################
+# Function    : IssueNameForBranch
+# Description : Converts issue name for branch
+# Parameters  : /
+################################################################################
+
+IssueNameForBranch()
+{
+  ISSUE_AS_SNAKE_CASE=${ISSUE_NAME// /_}
+  declare -l ISSUE_NAME_FOR_BRANCH
+  ISSUE_NAME_FOR_BRANCH=$ISSUE_AS_SNAKE_CASE
+  echo $ISSUE_NAME_FOR_BRANCH | sed -e 's/|/\-/g'
+}
 
 ################################################################################
 # Function    : DisplayDirectoryName
@@ -55,6 +77,39 @@ IsDirectoryGitRepository()
 }
 
 ################################################################################
+# Function    : UserInput
+# Description : Handles user input
+# Parameters  : message
+################################################################################
+
+UserInput()
+{
+  read -p "$1: " input
+  echo $input
+}
+
+################################################################################
+# Function    : DoYouWishToProceed
+# Description : Handles proceeding dialog
+# Parameters  : /
+################################################################################
+
+DoYouWishToProceed()
+{
+  while true; do
+    read -p "Do you wish to proceed? [Y/n]: " yn
+    case $yn in
+      [Yy]* )
+        echo "1"
+      break;;
+      [Nn]* )
+        echo "0"
+      break;;
+    esac
+  done
+}
+
+################################################################################
 # Function    : Help
 # Description : Shows help text for script
 # Parameters  : /
@@ -63,36 +118,30 @@ IsDirectoryGitRepository()
 Help()
 {
   echo -e "\e[1mRunning $SCRIPT_NAME\e[0m"
-  echo "Description: Copy all differences between two git commits"
+  echo "Description: Development setup for git"
   echo ""
-  echo "Show this help       : $SCRIPT_NAME -h"
-  echo "Copy all differences : $SCRIPT_NAME [start-commit] [end-commit] [target-directory]"
+  echo "Show this help  : $SCRIPT_NAME -h"
+  echo "Run this script : $SCRIPT_NAME [issue-number] [issue-name]"
 }
 
 ################################################################################
 # Function    : GetArguments
 # Description : Gets arguments passed to the script
-# Parameters  : -h | start-commit end-commit target-directory
+# Parameters  : -h
 ################################################################################
 
 GetArguments()
 {
   if [ $# -eq 1 ]
   then
-    if [ "$1" = "-h" ]
+    if [ "x$1" = "x-h" ]
     then
       Help
       End 0
     else
       Help
-      End 1 "Incorrect parameter"
+      End 1 "Two parameters are required!"
     fi
-  elif [ $# -eq 3 ]
-  then
-    return 1
-  else
-    Help
-    End 1 "Incorrect parameters"
   fi
 }
 
@@ -122,20 +171,43 @@ End()
 
 echo "Script $SCRIPT_NAME starting..."
 echo ""
+
 GetArguments $@
 IsDirectoryGitRepository
 
-echo "Finding and copying files and folders to $TARGET_DIRECTORY"
+echo "Available branches:"
+git branch
+echo ""
 
-for i in $(git diff --name-only $START_COMMIT $END_COMMIT)
-do
-  # First create the TARGET_DIRECTORY directory, if it doesn't exist
-  mkdir -p "$TARGET_DIRECTORY/$(dirname $i)"
-  # Then copy over the file
-  cp "$i" "$TARGET_DIRECTORY/$i"
-done
+SOURCE_BRANCH=$(UserInput "Enter name of the branch you want to create new branch from")
+TARGET_BRANCH=${BRANCH_PREFIX}/${ISSUE_NUMBER}_$(IssueNameForBranch)
+echo -e "Will create branch \e[1m$TARGET_BRANCH\e[0m from \e[1m$SOURCE_BRANCH\e[0m"
+echo ""
 
-echo "Files copied to $TARGET_DIRECTORY directory"
+if [ "$(DoYouWishToProceed)" -eq 1 ]
+then
+  git checkout ${SOURCE_BRANCH} || END 1 "Not able to checkout to the ${SOURCE_BRANCH}"
+  git pull
+  git branch ${TARGET_BRANCH}
+  git checkout ${TARGET_BRANCH}
+  echo ""
+  echo "Will push local branch to remote"
+  if [ "$(DoYouWishToProceed)" -eq 1 ]
+  then
+    git push -u origin ${TARGET_BRANCH}
+    echo ""
+    echo "Copy following info:"
+    echo ""
+    echo "Name: $REQUEST_PREFIX #$ISSUE_NUMBER $ISSUE_NAME"
+    if [ -n "${ISSUE_BASE_PATH}" ]
+    then
+      echo "Description: Based on $BRANCH_PREFIX [#$ISSUE_NUMBER]($ISSUE_BASE_PATH/$ISSUE_NUMBER)"
+    fi
+  else
+    git checkout ${SOURCE_BRANCH}
+    git branch -D ${TARGET_BRANCH}
+  fi
+fi
 
 End 0
 
