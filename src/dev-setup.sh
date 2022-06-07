@@ -66,8 +66,6 @@ DisplayDirectoryName()
 
 IsDirectoryGitRepository()
 {
-  echo $(DisplayDirectoryName)
-
   if [ -d .git ]
   then
     return 1
@@ -173,6 +171,7 @@ echo "Script $SCRIPT_NAME starting..."
 echo ""
 
 GetArguments $@
+DisplayDirectoryName
 IsDirectoryGitRepository
 
 echo "Available branches:"
