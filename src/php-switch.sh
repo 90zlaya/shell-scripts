@@ -102,7 +102,6 @@ GetArguments()
 }
 
 ################################################################################
-# Shell terminates
 # Function    : End
 # Description : Terminates shell script
 # Parameters  : is-with-error [error-text]

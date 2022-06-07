@@ -25,7 +25,7 @@ Enter into cloned directory and mirror source folder.
 cd shell-scripts/
 
 # Mirror src directory
-cp -R src/ deploy/
+cp -R src/ deploy/versions/[current-version]
 ```
 
 It's recommended to keep name `deploy` for this copy as it was ignored by [.gitignore](.gitignore). \
@@ -35,7 +35,7 @@ Navigate to the mirrored folder and edit script to meet your requirements.
 
 ```bash
 # Enter mirrored directory
-cd deploy/
+cd deploy/versions/[current-version]
 
 # List all shell scripts
 ls -al *.sh
@@ -63,20 +63,19 @@ You can create alias for certain script:
 # Create alias
 alias [alias-name]="[command]"
 
-# Force list of aliases to reload in current session
-source ~/.bashrc
-
 # Get help how to use script you aliased
 [alias-name] -h
 ```
 
-Replace `[alias-name]` with your alias and `[command]` with full path to your script (presumably `[base-url]/shell-scripts/deploy/[script-name].sh`). Force list of aliases to reload in current session or restart terminal.
+Replace `[alias-name]` with your alias and `[command]` with full path to your script (presumably `[base-url]/shell-scripts/deploy/versions/[current-version]/[script-name].sh`).
 
 [⬆ back to top](#table-of-contents)
 
 ## After Installation
 
-Make sure to check if there's new version of this repository. Occasionally run `git pull` in terminal. It's being updated and maintained on a regular basis. Any help in terms of development and suggestions will be warmly welcomed.
+Make sure to check if there's new version of this repository.\
+It's being updated and maintained on a regular basis.\
+Any help in terms of development and suggestions will be warmly welcomed.
 
 [⬆ back to top](#table-of-contents)
 
