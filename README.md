@@ -73,7 +73,9 @@ Replace `[alias-name]` with your alias and `[command]` with full path to your sc
 
 ## After Installation
 
-Make sure to check if there's new version of this repository. It's being updated and maintained on a regular basis. Any help in terms of development and suggestions will be warmly welcomed.
+Make sure to check if there's new version of this repository.\
+It's being updated and maintained on a regular basis.\
+Any help in terms of development and suggestions will be warmly welcomed.
 
 [⬆ back to top](#table-of-contents)
 
