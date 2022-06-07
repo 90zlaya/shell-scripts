@@ -6,11 +6,12 @@
 * [Dev Setup](#dev-setup)
 * [PHP Switch](#php-switch)
 * [Generate Password](#generate-password)
-* [Git Copy](#git-copy)
-* [Git Sync](#git-sync)
-* [Git Pull](#git-pull)
+* [Git](#git)
+  * [Git Copy](#git-copy)
+  * [Git Sync](#git-sync)
+  * [Git Pull](#git-pull)
 
-[↩ back to README.md](../README.md#shell-scripts)
+[↩ back to main table of contents](../README.md#table-of-contents)
 
 ## Dev Setup
 
@@ -67,53 +68,55 @@ bash generate-password.sh
 
 [⬆ back to top](#table-of-contents)
 
-## Git Copy
+## Git
 
-* File: [git-copy.sh](git-copy.sh)
-* Parameters: start-commit end-commit target-directory
-* Description: Copy all differences between two git commits
+  ### Git Copy
 
-```bash
-# Show Help
-bash git-copy.sh -h
+  * File: [git-copy.sh](git-copy.sh)
+  * Parameters: start-commit end-commit target-directory
+  * Description: Copy all differences between two git commits
 
-# Copy all differences between start and end git commit to target directory
-bash git-copy.sh [start-commit] [end-commit] [target-directory]
-```
+  ```bash
+  # Show Help
+  bash git-copy.sh -h
 
-[⬆ back to top](#table-of-contents)
+  # Copy all differences between start and end git commit to target directory
+  bash git-copy.sh [start-commit] [end-commit] [target-directory]
+  ```
 
-## Git Sync
+  [⬆ back to top](#table-of-contents)
 
-* File: [git-sync.sh](git-sync.sh)
-* Parameters: main-branch folder-location remote-upstream
-* Description: Synchronize forked git repository
+  ### Git Sync
 
-```bash
-# Show Help
-bash git-sync.sh -h
+  * File: [git-sync.sh](git-sync.sh)
+  * Parameters: [branch-name] [folder-location] [remote-upstream]
+  * Description: Synchronize forked git repository
 
-# Sync with remote repo (doing this only once per forked repo)
-bash git-sync.sh [branch-name] /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]
+  ```bash
+  # Show Help
+  bash git-sync.sh -h
 
-# Sync with remote repo (when branch is master, remote upstream has been added and current directory chosen)
-bash [path-to-the-shell-script]/git-sync.sh
-```
+  # Sync with remote repo (doing this only once per forked repo)
+  bash git-sync.sh [branch-name] [full-forked-repo-folder-path] [full-remote-repo-path]
 
-[⬆ back to top](#table-of-contents)
+  # Sync with remote repo (when branch is master, remote upstream has been added and current directory chosen)
+  bash [path-to-the-shell-script]/git-sync.sh
+  ```
 
-## Git Pull
+  [⬆ back to top](#table-of-contents)
 
-* File: [git-pull.sh](git-pull.sh)
-* Parameters: None
-* Description: Run git pull on all repos from directory
+  ### Git Pull
 
-```bash
-# Show Help
-bash [path-to-the-shell-script]/git-pull.sh -h
+  * File: [git-pull.sh](git-pull.sh)
+  * Parameters: None
+  * Description: Run git pull on all repos from directory
 
-# When navigated to the root folder where all repos are located
-bash [path-to-the-shell-script]/git-pull.sh
-```
+  ```bash
+  # Show Help
+  bash [path-to-the-shell-script]/git-pull.sh -h
 
-[⬆ back to top](#table-of-contents)
+  # When navigated to the root folder where all repos are located
+  bash [path-to-the-shell-script]/git-pull.sh
+  ```
+
+  [⬆ back to top](#table-of-contents)
