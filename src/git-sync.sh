@@ -3,7 +3,7 @@
 ################################################################################
 # Script name : git-sync.sh
 # Description : Synchronize forked git repository
-# Parameters  : main-branch folder-location remote-upstream
+# Parameters  : [branch-name] [folder-location] [remote-upstream]
 # Author      : Zlatan Stajic <contact@zlatanstajic.com>
 # Licence     : MIT
 ################################################################################
@@ -12,7 +12,7 @@
 # Parameters
 ################################################################################
 
-MAIN_BRANCH=$1
+BRANCH_NAME=$1
 FOLDER_LOCATION=$2
 REMOTE_UPSTREAM=$3
 
@@ -35,8 +35,8 @@ Help()
   echo "Description: Synchronize forked git repository"
   echo ""
   echo "Show this help                         : $SCRIPT_NAME -h"
-  echo "First ever call                        : $SCRIPT_NAME master /var/www/html/[forked-repo-folder-name] https://github.com/[username]/[repo-name]"
-  echo "Every other call                       : $SCRIPT_NAME /var/www/html/[forked-repo-folder-name]"
+  echo "First ever call                        : $SCRIPT_NAME [branch-name] [full-forked-repo-folder-path] [full-remote-repo-path]"
+  echo "Every other call                       : $SCRIPT_NAME [branch-name] [full-forked-repo-folder-path]"
   echo "Call in current repo for master branch : $SCRIPT_NAME"
   echo "Call in current repo for other branch  : $SCRIPT_NAME [branch-name]"
 }
@@ -44,7 +44,7 @@ Help()
 ################################################################################
 # Function    : GetArguments
 # Description : Gets arguments passed to the script
-# Parameters  : -h | main-branch folder-location remote-upstream
+# Parameters  : -h
 ################################################################################
 
 GetArguments()
@@ -87,13 +87,13 @@ echo "Script $SCRIPT_NAME starting..."
 echo ""
 GetArguments $@
 
-# Check if using main master branch
-if [ "$MAIN_BRANCH" = "" ]
+# Check if using master branch
+if [ "$BRANCH_NAME" = "" ]
 then
-    echo "Using master branch"
-    MAIN_BRANCH="master"
+  echo "Using master branch"
+  BRANCH_NAME="master"
 else
-    echo "Using $MAIN_BRANCH branch"
+  echo "Using $BRANCH_NAME branch"
 fi
 
 git branch
@@ -101,10 +101,10 @@ git branch
 # Check if using current directory
 if [ "$FOLDER_LOCATION" = "" ]
 then
-    echo "Using current directory"
+  echo "Using current directory"
 else
-    echo "Using given directory"
-    cd $FOLDER_LOCATION
+  echo "Using given directory"
+  cd $FOLDER_LOCATION
 fi
 
 # List current path
@@ -113,17 +113,17 @@ pwd
 # Check if adding remote upstream
 if [ "$REMOTE_UPSTREAM" = "" ]
 then
-    echo "Remote versions already added"
+  echo "Remote versions already added"
 else
-    echo "Adding remote upstream"
-    git remote add upstream $REMOTE_UPSTREAM
+  echo "Adding remote upstream"
+  git remote add upstream $REMOTE_UPSTREAM
 fi
 
 git remote -v
 git fetch upstream
-git checkout $MAIN_BRANCH
-git rebase upstream/$MAIN_BRANCH
-git push -f origin $MAIN_BRANCH
+git checkout $BRANCH_NAME
+git rebase upstream/$BRANCH_NAME
+git push -f origin $BRANCH_NAME
 
 End 0
 
