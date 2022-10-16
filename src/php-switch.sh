@@ -93,7 +93,11 @@ GetArguments()
     elif [[ ! " ${PHP_VERSIONS_INSTALLED[@]} " =~ " ${PHP_VERSION} " ]]
     then
       Help
-      End 1 "Incorrect parameters: Non existing PHP version"
+      End 1 "Incorrect parameters: Non-existent PHP version"
+    # Checking number of versions installed
+    elif [ ${#PHP_VERSIONS_INSTALLED[@]} -lt 2 ]
+    then
+      End 1 "Not possible to use script with ${#PHP_VERSIONS_INSTALLED[@]} PHP version(s) installed"
     fi
   else
     Help
@@ -137,7 +141,7 @@ done
 sudo update-alternatives --set php /usr/bin/php${PHP_VERSION}
 sudo a2enmod php${PHP_VERSION}
 echo ""
-echo "Running systemctl restart apache2..."
+echo "Running command systemctl restart apache2..."
 sudo systemctl restart apache2
 CurrentPHPVersion
 End 0
