@@ -44,16 +44,16 @@ PrintMessage()
 ################################################################################
 # Function    : GitPull
 # Description : Pulls changes from git repository
-# Parameters  : repository
+# Parameters  : repository to-start-recursion
 ################################################################################
 
 GitPull()
 {
-  if [ -d $1 ]
+  if [ -d $1 ] && [ $1 != "." ] && [ $1 != ".." ]
   then
     PrintMessage 1
-    echo "Entering directory"
-    cd ${repo}
+    echo "Entering directory $1"
+    cd $1
     pwd
     if [ -d .git ]
     then
@@ -62,10 +62,19 @@ GitPull()
       git status
       git log -n 1
     else
-      echo "Not git repo"
+      echo "$1 is not git repo"
+      if [ $2 -eq 1 ]
+      then
+        echo "Entering sub-directory"
+        SUB_REPOS=$(ls -a)
+        for sub_repo in ${SUB_REPOS[*]}
+        do
+          GitPull ${sub_repo} 0
+        done
+      fi
     fi
     cd ../
-    echo "Leaving directory"
+    echo "Leaving directory $1"
     PrintMessage 0
   fi
 }
@@ -130,11 +139,11 @@ End()
 echo "Script $SCRIPT_NAME starting..."
 echo ""
 GetArguments $@
-REPOS=$(ls)
+REPOS=$(ls -a)
 
 for repo in ${REPOS[*]}
 do
-  GitPull ${repo}
+  GitPull ${repo} 1
 done
 
 End 0
