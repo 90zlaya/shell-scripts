@@ -62,15 +62,16 @@ GitPull()
       git status
       git log -n 1
     else
-      echo "$1 is not git repo, entering sub-directory"
-      SUB_REPOS=$(ls -a)
-      for sub_repo in ${SUB_REPOS[*]}
-      do
-        if [ $2 -eq 1 ]
-        then
+      echo "$1 is not git repo"
+      if [ $2 -eq 1 ]
+      then
+        echo "Entering sub-directory"
+        SUB_REPOS=$(ls -a)
+        for sub_repo in ${SUB_REPOS[*]}
+        do
           GitPull ${sub_repo} 0
-        fi
-      done
+        done
+      fi
     fi
     cd ../
     echo "Leaving directory $1"
