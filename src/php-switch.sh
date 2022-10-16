@@ -94,6 +94,10 @@ GetArguments()
     then
       Help
       End 1 "Incorrect parameters: Non existing PHP version"
+    # Checking number of versions installed
+    elif [ ${#PHP_VERSIONS_INSTALLED[@]} -lt 2 ]
+    then
+      End 1 "Not possible to use script with ${#PHP_VERSIONS_INSTALLED[@]} PHP version(s) installed"
     fi
   else
     Help
