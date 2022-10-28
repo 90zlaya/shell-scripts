@@ -42,7 +42,7 @@ IssueNameForBranch()
   ISSUE_AS_SNAKE_CASE=${ISSUE_NAME// /_}
   declare -l ISSUE_NAME_FOR_BRANCH
   ISSUE_NAME_FOR_BRANCH=$ISSUE_AS_SNAKE_CASE
-  echo $ISSUE_NAME_FOR_BRANCH | sed -e 's/|/\-/g'
+  echo ${ISSUE_NAME_FOR_BRANCH//[&]/and} | sed -e 's/|/\-/g'
 }
 
 ################################################################################
