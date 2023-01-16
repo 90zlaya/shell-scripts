@@ -95,7 +95,7 @@ UserInput()
 DoYouWishToProceed()
 {
   while true; do
-    read -p "Do you wish to proceed? [Y/n]: " yn
+    read -p "Do you wish to proceed? [y/n]: " yn
     case $yn in
       [Yy]* )
         echo "1"
